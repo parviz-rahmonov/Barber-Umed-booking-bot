@@ -2,6 +2,86 @@
 
 ## Запуск на Windows (Python 3.12, Docker Desktop)
 
+# Barber Umed | Telegram Booking Bot
+
+A Telegram appointment booking system for a single-barber business, built with Python, aiogram 3, PostgreSQL and SQLAlchemy.
+
+## Features
+
+**For customers**
+- Book a barber appointment through Telegram
+- Choose a service and view its price
+- Browse available dates and time slots
+- Cancel or reschedule appointments
+- View barber contact information
+- Leave reviews after completed visits
+
+**For administrators**
+- Manage services and prices
+- Rename, archive and restore services
+- Configure working hours and days off
+- View and manage appointments
+- Manage barber profile information
+- Moderate customer reviews
+
+**Booking rules**
+- Single barber
+- 60-minute appointments
+- Booking window of up to 30 days
+- PostgreSQL protection against overlapping appointments
+- Customer cancellations and rescheduling subject to advance-notice rules
+
+## Technology Stack
+
+- Python 3.12
+- aiogram 3
+- PostgreSQL 16
+- SQLAlchemy (async)
+- asyncpg
+- Alembic
+- Docker Compose
+- pytest
+
+## Getting Started
+
+1. Clone the repository.
+2. Create a Python virtual environment.
+3. Install dependencies using `pip install -r requirements-dev.txt`.
+4. Copy `.env.example` to `.env` and configure environment variables.
+5. Start PostgreSQL using `docker compose up -d db`.
+6. Apply database migrations using `python -m alembic upgrade head`.
+7. Start the bot using `python main.py`.
+
+Only PostgreSQL runs in Docker in this local setup. The Telegram bot runs directly in Python.
+
+## Testing
+
+Run:
+
+`python -m pytest -q`
+
+Automated tests cover selected application behavior. End-to-end Telegram testing and reminder delivery require separate verification.
+
+## Appointment Reminders
+
+The project includes support for scheduling appointment reminders 24 hours and 2 hours before visits. End-to-end delivery verification is required before production deployment.
+
+## Security
+
+Credentials must be stored in `.env`, which is excluded from version control. Never commit actual bot tokens, database passwords or customer information.
+
+## Project Status
+
+Version 2.0.0 — release candidate undergoing final integration verification.
+
+## Developer
+
+**Rahmonov Parviz**
+
+Python / Telegram Bot Developer
+
+GitHub: [parviz-rahmonov](https://github.com/parviz-rahmonov)
+
 1. Скопируйте `.env.example` в `.env` и задайте собственные BOT_TOKEN, ADMIN_ID и POSTGRES_PASSWORD. В DATABASE_URL используйте тот же пароль (при спецсимволах сделайте URL-encoding).
 2. В терминале из папки проекта: `python -m venv .venv`, затем `.venv\Scripts\Activate.ps1`.
 3. `pip install -r requirements-dev.txt`
