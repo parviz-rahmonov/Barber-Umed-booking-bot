@@ -73,12 +73,12 @@ async def main() -> None:
         )
     finally:
         if reminder_task is not None:
-            reminder_task.cancel()
+                reminder_task.cancel()
   
-            with suppress(asyncio.CancelledError):
-               await reminder_task
+        with suppress(asyncio.CancelledError):
+            await reminder_task
 
-        await engine.dispose()
+            await engine.dispose()
 
 
 
