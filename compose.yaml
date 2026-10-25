@@ -1,0 +1,20 @@
+name: barber_umed_v2
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5433:5432"
+    environment:
+      POSTGRES_DB: barber
+      POSTGRES_USER: barber
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - barber_v2_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U barber -d barber"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+volumes:
+  barber_v2_pgdata:

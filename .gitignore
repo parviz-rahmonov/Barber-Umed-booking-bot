@@ -1,0 +1,17 @@
+# credentials
+.env
+.env.*
+!.env.example
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.coverage
+*.egg-info/
+# editors
+.vscode/
+.idea/
+# local logs
+*.log
